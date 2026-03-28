@@ -4,7 +4,7 @@ import Badge from "../components/ui/Badge";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
-import LiveImpactSnapshot from "../components/ui/LiveImpactSnapshot";
+import HowYouWinCard from "../components/ui/HowYouWinCard";
 import DrawEngineFlow from "../components/ui/DrawEngineFlow";
 import { scrollToSection } from "../utils/scrollLanding";
 
@@ -262,7 +262,7 @@ function LandingPage({
         </Card>
 
         <div className="mt-12 md:mt-16">
-          <LiveImpactSnapshot />
+          <HowYouWinCard />
         </div>
       </section>
 

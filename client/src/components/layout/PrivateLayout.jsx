@@ -24,10 +24,11 @@ function linkClass(isActive) {
 }
 
 function PrivateLayout() {
-  const { searchQuery, setSearchQuery } = useApp();
+  const { searchQuery, setSearchQuery, subscription } = useApp();
   const navigate = useNavigate();
   const [notifOpen, setNotifOpen] = useState(false);
   const notifRef = useRef(null);
+  const isSubscribed = Boolean(subscription && subscription.status === "active");
   useClickOutside(notifRef, () => setNotifOpen(false), notifOpen);
 
   const goToScore = () => {
@@ -40,11 +41,19 @@ function PrivateLayout() {
   return (
     <div className="grid gap-6 md:gap-8 lg:grid-cols-[230px_1fr]">
       <aside className="hidden rounded-2xl bg-white p-5 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 dark:bg-[#07110D] dark:border-white/10 lg:block">
-        <div className="mb-5 flex flex-col items-center gap-2 border-b border-[var(--pi-border)] pb-4 dark:border-white/[0.06]">
+        <div className="mb-5 flex flex-col items-center gap-2 border-b border-gray-200 pb-4 dark:border-white/10">
           <Logo variant="sidebar" />
-          <p className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-500 dark:text-[#9CA3AF]">
-            Premium tier
+          <p className={`text-center text-[10px] font-medium uppercase tracking-[0.14em] ${isSubscribed ? 'text-green-600 dark:text-green-400' : 'text-gray-500 dark:text-gray-400'}`}>
+            {isSubscribed ? "Premium Tier" : "No Active Membership"}
           </p>
+          {!isSubscribed && (
+            <button
+              onClick={() => navigate('/profile')}
+              className="mt-1 rounded-lg border border-green-500/20 bg-green-50/50 px-3 py-1 text-[11px] font-semibold text-green-700 transition-colors duration-200 hover:border-green-400/50 hover:bg-green-100 dark:border-green-500/10 dark:bg-green-500/5 dark:text-green-400 dark:hover:border-green-400/30 dark:hover:bg-green-500/10"
+            >
+              Upgrade to Premium
+            </button>
+          )}
         </div>
 
         <nav className="space-y-1.5" aria-label="Main navigation">

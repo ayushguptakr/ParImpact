@@ -1,8 +1,13 @@
+import Footer from "./Footer";
+
 const AppShell = ({ children }) => {
   return (
-    <main className="min-h-screen bg-surface-page px-6 py-8 text-neutral-900 transition-colors duration-200 dark:bg-[#0a0f0d] dark:text-[#e5e7eb] md:px-8 md:py-10">
-      <div className="mx-auto max-w-7xl">{children}</div>
-    </main>
+    <div className="flex min-h-screen flex-col">
+      <main className="flex-1 px-6 py-8 md:px-8 md:py-10">
+        <div className="mx-auto max-w-7xl">{children}</div>
+      </main>
+      <Footer />
+    </div>
   );
 };
 

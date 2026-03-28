@@ -4,6 +4,7 @@ import Badge from "../components/ui/Badge";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
+import LiveImpactSnapshot from "../components/ui/LiveImpactSnapshot";
 import { scrollToSection } from "../utils/scrollLanding";
 
 const stats = [
@@ -259,24 +260,9 @@ function LandingPage({
           <p className="mt-4 text-sm text-neutral-600 dark:text-gray-400">Every round contributes to a cause.</p>
         </Card>
 
-        <Card className="flex items-center justify-between gap-4 p-6 md:p-8">
-          <div>
-            <p className="text-xs uppercase tracking-[0.12em] text-neutral-600 dark:text-gray-400">Ready To Join</p>
-            <h3 className="mt-2 text-3xl font-semibold leading-[1.08] tracking-[-0.02em] text-neutral-800 dark:text-[#E5E7EB]">
-              Start playing with purpose.
-            </h3>
-          </div>
-          <Button
-            variant="primary"
-            className="px-6 py-3 text-base"
-            onClick={() => {
-              setMode("register");
-              scrollToSection("auth-panel");
-            }}
-          >
-            Join Now
-          </Button>
-        </Card>
+        <div className="mt-12 md:mt-16">
+          <LiveImpactSnapshot />
+        </div>
       </section>
 
       <Card id="draw-engine" className="relative scroll-mt-24 overflow-hidden md:p-8 md:scroll-mt-28">

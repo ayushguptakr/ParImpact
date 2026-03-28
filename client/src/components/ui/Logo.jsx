@@ -71,7 +71,7 @@ function LogoSvg({ view, size, showText, animated }) {
 
   return (
     <span
-      className="pi-logo-group group inline-flex cursor-default select-none transition-[transform,filter] duration-200 ease-out will-change-transform hover:scale-[1.03] hover:brightness-110 dark:hover:brightness-125"
+      className="pi-logo-group group inline-flex cursor-default select-none transition-[transform,filter] duration-200 ease-out will-change-transform hover:scale-105 hover:brightness-110 dark:hover:brightness-125"
       title="ParImpact"
     >
       <svg

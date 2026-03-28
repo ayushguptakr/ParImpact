@@ -78,19 +78,20 @@ function LandingPage({
       <section className="grid gap-8 md:gap-10 lg:grid-cols-[1.3fr_0.9fr]">
         <div
           id="how-it-works"
-          className={`surface-glass relative scroll-mt-24 overflow-hidden rounded-3xl border p-6 transition-all duration-500 ease-in-out md:p-8 md:scroll-mt-28 ${
+          className={`bg-white dark:bg-[#121A16] relative scroll-mt-24 overflow-hidden rounded-3xl border border-gray-100 dark:border-white/10 p-8 shadow-md transition-all duration-500 ease-in-out md:p-8 md:scroll-mt-28 hover:shadow-lg ${
             heroVisible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
           }`}
         >
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(34,197,94,0.08),transparent_45%)] dark:bg-[radial-gradient(circle_at_15%_15%,rgba(34,197,94,0.14),transparent_45%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(34,197,94,0.15),transparent_60%)] dark:bg-[radial-gradient(circle_at_15%_15%,rgba(34,197,94,0.25),transparent_60%)] blur-md" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 to-transparent dark:from-white/[0.03] dark:to-transparent" />
           <div className="relative z-10 space-y-6 md:space-y-8">
           <Badge tone="active">Live Charity Draw Active</Badge>
           <div className="max-w-3xl space-y-4">
-            <h2 className="text-4xl font-semibold leading-[1.1] tracking-[-0.02em] text-neutral-900 md:text-5xl dark:text-[#E5E7EB]">
+            <h2 className="text-4xl font-semibold leading-tight tracking-[-0.02em] text-neutral-900 md:text-5xl dark:text-[#E5E7EB]">
               Elevate Your <span className="text-green-700 dark:text-[#22C55E]">Game</span>, Power Your Impact.
             </h2>
-            <p className="text-base text-neutral-600 dark:text-[#9CA3AF] md:text-lg">
+            <p className="text-base text-gray-600/90 dark:text-gray-400/90 md:text-lg">
               A membership built for golfers who want performance data and purposeful giving—without
               noise or gimmicks.
             </p>

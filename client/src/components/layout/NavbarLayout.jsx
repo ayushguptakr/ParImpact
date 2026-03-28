@@ -10,7 +10,7 @@ function NavbarLayout({
   navGapClass = "gap-1",
 }) {
   return (
-    <header className="navbar-shell">
+    <header className="navbar-shell h-18">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-3 px-6 py-3 md:grid-cols-[1fr_auto_1fr] md:items-center md:gap-4 md:px-8 md:py-3.5">
         <div className="flex items-center justify-between gap-4 md:contents">
           <div className="min-w-0 md:justify-self-start">{left}</div>

@@ -85,11 +85,11 @@ function LandingPage({
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-green-50 to-transparent dark:from-green-900/20 dark:to-transparent" />
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_15%,rgba(34,197,94,0.15),transparent_60%)] dark:bg-[radial-gradient(circle_at_15%_15%,rgba(34,197,94,0.25),transparent_60%)] blur-md" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/40 to-transparent dark:from-white/[0.03] dark:to-transparent" />
-          <div className="relative z-10 space-y-6 md:space-y-8">
+          <div className="relative z-10 space-y-8 md:space-y-10">
           <Badge tone="active">Live Charity Draw Active</Badge>
           <div className="max-w-3xl space-y-4">
             <h2 className="text-4xl font-semibold leading-tight tracking-[-0.02em] text-neutral-900 md:text-5xl dark:text-[#E5E7EB]">
-              Elevate Your <span className="text-green-700 dark:text-[#22C55E]">Game</span>, Power Your Impact.
+              Elevate Your <span className="text-green-600 dark:text-green-400">Game</span>, Power Your Impact.
             </h2>
             <p className="text-base text-gray-600/90 dark:text-gray-400/90 md:text-lg">
               A membership built for golfers who want performance data and purposeful giving—without

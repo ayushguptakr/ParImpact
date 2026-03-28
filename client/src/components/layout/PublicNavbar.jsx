@@ -50,7 +50,7 @@ function PublicNavbar({
   return (
     <NavbarLayout
       ariaLabel="Marketing"
-      navGapClass="gap-6 md:gap-8"
+      navGapClass="gap-8 md:gap-10"
       left={
         <div className="flex min-w-0 items-center" aria-label={LOGO_ALT}>
           <Logo variant="navbar" />

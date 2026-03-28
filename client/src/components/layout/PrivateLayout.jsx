@@ -18,8 +18,8 @@ const sidebarLinks = [
 function linkClass(isActive) {
   return `flex w-full min-w-0 items-center gap-2.5 rounded-xl px-3 py-2 text-left text-sm transition-colors duration-200 ${
     isActive
-      ? "bg-green-100 text-green-900 shadow-[inset_0_0_0_1px_rgba(22,163,74,0.2)] dark:bg-green-500/15 dark:text-[#22C55E] dark:shadow-[inset_0_0_0_1px_rgba(34,197,94,0.25)]"
-      : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-[#9CA3AF] dark:hover:bg-white/5 dark:hover:text-[#E5E7EB]"
+      ? "bg-green-100 text-green-900 shadow-[inset_0_0_0_1px_rgba(22,163,74,0.2)] dark:bg-green-500/15 dark:text-green-400 dark:shadow-[inset_0_0_0_1px_rgba(74,222,128,0.25)]"
+      : "text-neutral-600 hover:bg-gray-100 hover:text-neutral-900 dark:text-[#9CA3AF] dark:hover:bg-white/5 dark:hover:text-[#E5E7EB]"
   }`;
 }
 
@@ -39,7 +39,7 @@ function PrivateLayout() {
 
   return (
     <div className="grid gap-6 md:gap-8 lg:grid-cols-[230px_1fr]">
-      <aside className="surface-glass hidden rounded-2xl p-5 lg:block">
+      <aside className="hidden rounded-2xl bg-white p-5 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 dark:bg-[#07110D] dark:border-white/10 lg:block">
         <div className="mb-5 flex flex-col items-center gap-2 border-b border-[var(--pi-border)] pb-4 dark:border-white/[0.06]">
           <Logo variant="sidebar" />
           <p className="text-center text-[10px] font-medium uppercase tracking-[0.14em] text-neutral-500 dark:text-[#9CA3AF]">
@@ -68,7 +68,7 @@ function PrivateLayout() {
 
       <div className="min-w-0 space-y-4 md:space-y-6">
         <nav
-          className="surface-glass flex gap-2 overflow-x-auto rounded-2xl p-2 lg:hidden"
+          className="flex gap-2 overflow-x-auto rounded-2xl bg-white p-2 shadow-md border border-gray-100 dark:border-white/10 dark:bg-[#07110D] lg:hidden"
           aria-label="Main navigation mobile"
         >
           {sidebarLinks.map((item) => {
@@ -81,7 +81,7 @@ function PrivateLayout() {
                 className={({ isActive }) =>
                   `flex shrink-0 items-center gap-1.5 rounded-xl px-3 py-2 text-xs font-medium transition-colors duration-200 ${
                     isActive
-                      ? "bg-green-100 text-green-900 dark:bg-green-500/15 dark:text-[#22C55E]"
+                      ? "bg-green-100 text-green-900 dark:bg-green-500/15 dark:text-green-400"
                       : "text-neutral-600 dark:text-[#9CA3AF]"
                   }`
                 }
@@ -93,7 +93,7 @@ function PrivateLayout() {
           })}
         </nav>
 
-        <div className="surface-glass flex flex-col gap-3 rounded-2xl px-4 py-3 sm:flex-row sm:items-center sm:justify-between md:px-5 md:py-4">
+        <div className="flex flex-col gap-3 rounded-2xl bg-white px-4 py-3 shadow-md border border-gray-100 dark:bg-[#121A16] dark:border-white/10 sm:flex-row sm:items-center sm:justify-between md:px-5 md:py-4">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-neutral-500 dark:text-[#9CA3AF]">
             Quick search
           </p>

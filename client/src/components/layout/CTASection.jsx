@@ -5,6 +5,8 @@ function CTASection() {
   const { token } = useApp();
   const isLoggedIn = Boolean(token);
 
+  if (isLoggedIn) return null;
+
   return (
     <section className="w-full">
       <div className="mx-auto max-w-6xl px-6 md:px-8">

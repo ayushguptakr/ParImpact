@@ -1,7 +1,26 @@
 import { Link } from "react-router-dom";
 import Logo from "../ui/Logo";
+import { useApp } from "../../context/AppContext";
 
 function Footer() {
+  const { token } = useApp();
+  const isLoggedIn = Boolean(token);
+
+  if (isLoggedIn) {
+    return (
+      <footer className="w-full border-t border-gray-200 bg-white/80 transition-colors duration-300 dark:border-white/10 dark:bg-transparent">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-4 text-sm text-gray-500 dark:text-gray-400 sm:flex-row md:px-8">
+          <p>© 2026 ParImpact</p>
+          <div className="flex items-center gap-4">
+            <a href="mailto:support@parimpact.com" className="transition-colors duration-200 hover:text-green-600 dark:hover:text-green-400">Support</a>
+            <Link to="#" className="transition-colors duration-200 hover:text-green-600 dark:hover:text-green-400">Privacy</Link>
+            <Link to="#" className="transition-colors duration-200 hover:text-green-600 dark:hover:text-green-400">Terms</Link>
+          </div>
+        </div>
+      </footer>
+    );
+  }
+
   return (
     <footer className="mt-16 w-full animate-[pi-fade-in_0.8s_ease-out_forwards] border-t border-gray-200 bg-gradient-to-r from-white via-[#f6f9f7] to-[#eef5f1] pt-16 text-gray-700 opacity-0 transition-colors duration-300 dark:border-green-500/10 dark:bg-gradient-to-t dark:from-[#0a1f14] dark:via-[#07140d] dark:to-transparent dark:text-gray-300">
       <div className="mx-auto max-w-7xl px-6 pb-12 md:px-8">
@@ -61,3 +80,4 @@ function Footer() {
 }
 
 export default Footer;
+

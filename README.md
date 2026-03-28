@@ -35,10 +35,6 @@ server/
     validators/
 ```
 
-## Environment Variables
-
-- Copy `client/.env.example` to `client/.env`
-- Copy `server/.env.example` to `server/.env`
 
 ## Local Development
 

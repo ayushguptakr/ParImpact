@@ -22,7 +22,7 @@ function NavTab({ to, end, children, icon: Icon }) {
       className={({ isActive }) =>
         `inline-flex items-center gap-1.5 rounded-xl px-3 py-2 text-sm font-medium transition-colors duration-200 ${
           isActive
-            ? "bg-green-100 text-green-900 dark:bg-green-500/15 dark:text-[#22C55E]"
+            ? "bg-green-100 text-green-900 dark:bg-green-500/10 dark:text-[#22C55E]"
             : "text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 dark:text-[#9CA3AF] dark:hover:bg-white/5 dark:hover:text-[#E5E7EB]"
         }`
       }
@@ -120,6 +120,7 @@ function PrivateNavbar({ darkMode, onToggleTheme }) {
   return (
     <NavbarLayout
       ariaLabel="App"
+      navGapClass="gap-2"
       left={
         <button
           type="button"

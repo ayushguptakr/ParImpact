@@ -1,0 +1,314 @@
+{
+  "info": {
+    "name": "Golf Charity Platform API",
+    "_postman_id": "c7ecf164-20e4-4c54-88ba-fd8e4f3a56ef",
+    "description": "Major API tests for auth, subscription, scores, draws, charity, and admin flows.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000/api" },
+    { "key": "token", "value": "" },
+    { "key": "adminToken", "value": "" },
+    { "key": "charityId", "value": "" },
+    { "key": "drawId", "value": "" },
+    { "key": "winnerId", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Postman User\",\n  \"email\": \"postman.user@golfcharity.local\",\n  \"password\": \"Pass@123\",\n  \"charityId\": \"{{charityId}}\",\n  \"contributionPercentage\": 12\n}"
+            },
+            "url": "{{baseUrl}}/auth/register"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.token) pm.collectionVariables.set('token', json.token);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ava@golfcharity.local\",\n  \"password\": \"Pass@123\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.token) pm.collectionVariables.set('token', json.token);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@golfcharity.local\",\n  \"password\": \"Pass@123\"\n}"
+            },
+            "url": "{{baseUrl}}/auth/login"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.token) pm.collectionVariables.set('adminToken', json.token);"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/auth/me"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Charity",
+      "item": [
+        {
+          "name": "List Charities",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/charities"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.charities && json.charities.length) {",
+                  "  pm.collectionVariables.set('charityId', json.charities[0]._id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Create Charity (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Postman Charity\",\n  \"description\": \"Created from Postman\",\n  \"image\": \"https://images.unsplash.com/photo-1465101046530-73398c7f28ca\"\n}"
+            },
+            "url": "{{baseUrl}}/charities"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscription",
+      "item": [
+        {
+          "name": "Get My Subscription",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/subscriptions/me"
+          }
+        },
+        {
+          "name": "Activate/Update Subscription",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"plan\": \"monthly\"\n}" },
+            "url": "{{baseUrl}}/subscriptions/me"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Scores",
+      "item": [
+        {
+          "name": "Add Score",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{token}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"value\": 21\n}" },
+            "url": "{{baseUrl}}/scores/me"
+          }
+        },
+        {
+          "name": "Get My Scores",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/scores/me"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Draws",
+      "item": [
+        {
+          "name": "Get Latest Draw",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/draws/latest"
+          }
+        },
+        {
+          "name": "Simulate Draw (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"totalPool\": 1000\n}"
+            },
+            "url": "{{baseUrl}}/draws/simulate"
+          }
+        },
+        {
+          "name": "Publish Draw (Admin)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"totalPool\": 1000\n}"
+            },
+            "url": "{{baseUrl}}/draws/publish"
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const json = pm.response.json();",
+                  "if (json.draw && json.draw._id) pm.collectionVariables.set('drawId', json.draw._id);",
+                  "if (json.draw && json.draw.winnerGroups) {",
+                  "  for (const g of json.draw.winnerGroups) {",
+                  "    if (g.winners && g.winners.length) {",
+                  "      pm.collectionVariables.set('winnerId', g.winners[0]._id);",
+                  "      break;",
+                  "    }",
+                  "  }",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ]
+        },
+        {
+          "name": "My Winner Claims",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": "{{baseUrl}}/draws/my-claims"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": "{{baseUrl}}/admin/users"
+          }
+        },
+        {
+          "name": "List Subscriptions",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": "{{baseUrl}}/admin/subscriptions"
+          }
+        },
+        {
+          "name": "List Winner Claims",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": "{{baseUrl}}/admin/draws/winner-claims"
+          }
+        },
+        {
+          "name": "Approve Winner",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              { "key": "Authorization", "value": "Bearer {{adminToken}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"verificationStatus\": \"approved\"\n}" },
+            "url": "{{baseUrl}}/admin/draws/{{drawId}}/winners/{{winnerId}}/verify"
+          }
+        },
+        {
+          "name": "Mark Winner Paid",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Authorization", "value": "Bearer {{adminToken}}" }],
+            "url": "{{baseUrl}}/admin/draws/{{drawId}}/winners/{{winnerId}}/pay"
+          }
+        }
+      ]
+    }
+  ]
+}

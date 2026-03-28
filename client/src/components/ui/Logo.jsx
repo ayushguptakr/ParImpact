@@ -6,8 +6,8 @@ export const LOGO_ALT = "ParImpact - Play with Purpose";
 
 const SIZE_HEIGHT = {
   small: 32,
-  medium: 36,
-  large: 38,
+  medium: 40,
+  large: 44,
 };
 
 /**
@@ -28,12 +28,20 @@ function Logo({
 }) {
   if (variant === "navbar") {
     return (
-      <div className={`flex items-center gap-2 ${className}`}>
+      <div className={`group flex cursor-pointer items-center gap-3 transition-all duration-200 hover:scale-[1.02] ${className}`} title={LOGO_ALT}>
         <div className="sm:hidden">
-          <LogoSvg view="mark" size="small" showText={false} animated={animatedProp} />
+          <LogoSvg size="small" animated={animatedProp} />
         </div>
-        <div className="hidden sm:block">
-          <LogoSvg view="full" size="medium" showText animated={animatedProp} />
+        <div className="hidden sm:flex sm:items-center sm:gap-3">
+          <LogoSvg size="medium" animated={animatedProp} />
+          <div className="flex flex-col leading-tight">
+            <span className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <span className="text-green-500">Par</span>Impact
+            </span>
+            <span className="text-[11px] text-gray-600 dark:text-gray-300 sm:hidden md:block">
+              Play with Purpose
+            </span>
+          </div>
         </div>
       </div>
     );
@@ -43,44 +51,47 @@ function Logo({
   const showText = showTextProp ?? (variant === "inline");
 
   return (
-    <div className={className}>
-      <LogoSvg
-        view={variant === "sidebar" || variant === "mark" ? "mark" : "full"}
-        size={size}
-        showText={showText}
-        animated={animatedProp}
-      />
+    <div className={`group flex cursor-pointer items-center gap-3 transition-all duration-200 hover:scale-[1.02] ${className}`} title={LOGO_ALT}>
+      {showText ? (
+        <div className="flex items-center gap-3">
+          <LogoSvg size={size} animated={animatedProp} />
+          <div className="flex flex-col leading-tight">
+            <span className={`font-bold tracking-tight text-gray-900 dark:text-white ${size === 'large' ? 'text-2xl' : size === 'medium' ? 'text-xl' : 'text-lg'}`}>
+              <span className="text-green-500">Par</span>Impact
+            </span>
+            <span className={`text-gray-600 dark:text-gray-300 ${size === 'large' ? 'text-sm' : size === 'medium' ? 'text-[11px]' : 'text-[10px]'}`}>
+              Play with Purpose
+            </span>
+          </div>
+        </div>
+      ) : (
+        <LogoSvg size={size} animated={animatedProp} />
+      )}
     </div>
   );
 }
 
 /**
  * @param {object} p
- * @param {'full' | 'mark'} p.view
  * @param {LogoSize} p.size
- * @param {boolean} p.showText
  * @param {boolean} p.animated
  */
-function LogoSvg({ view, size, showText, animated }) {
+function LogoSvg({ size, animated }) {
   const uid = useId().replace(/:/g, "");
   const gradRing = `pi-ring-${uid}`;
   const gradGlow = `pi-glow-${uid}`;
   const h = SIZE_HEIGHT[size];
-  const full = view === "full" && showText;
-  const w = full ? (h * 280) / 80 : (h * 66) / 60;
+  const w = (h * 66) / 60;
 
   return (
-    <span
-      className="pi-logo-group group inline-flex cursor-default select-none transition-[transform,filter] duration-200 ease-out will-change-transform hover:scale-105 hover:brightness-110 dark:hover:brightness-125"
-      title="ParImpact"
-    >
+    <span className="pi-logo-group inline-flex shrink-0 cursor-default select-none items-center justify-center transition-[transform,filter] duration-200 ease-out will-change-transform group-hover:brightness-110 dark:group-hover:brightness-125">
       <svg
         width={Math.round(w)}
         height={Math.round(h)}
-        viewBox={full ? "0 0 280 80" : "0 0 66 60"}
+        viewBox="0 0 66 60"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="overflow-visible text-neutral-800 drop-shadow-none transition-[filter] duration-200 group-hover:drop-shadow-[0_0_14px_rgba(34,197,94,0.28)] dark:text-neutral-200"
+        className="overflow-visible text-neutral-800 drop-shadow-none transition-[filter] duration-200 group-hover:drop-shadow-[0_0_14px_rgba(34,197,94,0.28)] dark:drop-shadow-[0_0_6px_rgba(34,197,94,0.4)] dark:text-neutral-200"
         aria-hidden
         focusable="false"
       >
@@ -95,38 +106,7 @@ function LogoSvg({ view, size, showText, animated }) {
           </radialGradient>
         </defs>
 
-        {full ? (
-          <>
-            <IconMark
-              gradRing={gradRing}
-              gradGlow={gradGlow}
-              animated={animated}
-              offsetX={10}
-              offsetY={10}
-            />
-            <text
-              x="80"
-              y="42"
-              fontFamily="Inter, ui-sans-serif, system-ui, sans-serif"
-              fontSize="26"
-              fontWeight="600"
-            >
-              <tspan fill="#4ADE80">Par</tspan>
-              <tspan className="fill-neutral-800 dark:fill-[#E5E7EB]">Impact</tspan>
-            </text>
-            <text
-              x="80"
-              y="62"
-              fontFamily="Inter, ui-sans-serif, system-ui, sans-serif"
-              fontSize="12"
-              className="fill-neutral-500 dark:fill-[#9CA3AF]"
-            >
-              Play with Purpose
-            </text>
-          </>
-        ) : (
-          <IconMark gradRing={gradRing} gradGlow={gradGlow} animated={animated} offsetX={10} offsetY={10} />
-        )}
+        <IconMark gradRing={gradRing} gradGlow={gradGlow} animated={animated} offsetX={10} offsetY={10} />
       </svg>
       <span className="sr-only">{LOGO_ALT}</span>
     </span>

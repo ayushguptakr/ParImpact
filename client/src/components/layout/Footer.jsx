@@ -4,7 +4,7 @@ import Logo from "../ui/Logo";
 function Footer() {
   return (
     <footer className="mt-16 w-full animate-[pi-fade-in_0.8s_ease-out_forwards] border-t border-gray-200 bg-gradient-to-r from-white via-[#f6f9f7] to-[#eef5f1] pt-16 text-gray-700 opacity-0 transition-colors duration-300 dark:border-green-500/10 dark:bg-gradient-to-t dark:from-[#0a1f14] dark:via-[#07140d] dark:to-transparent dark:text-gray-300">
-      <div className="mx-auto max-w-7xl px-8 pb-12">
+      <div className="mx-auto max-w-7xl px-6 pb-12 md:px-8">
         <div className="grid grid-cols-1 gap-10 text-center md:grid-cols-3 md:gap-8 md:text-left lg:gap-12">
           
           {/* LEFT BRAND */}

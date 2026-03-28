@@ -2,8 +2,9 @@ import { Link } from "react-router-dom";
 
 function CTASection() {
   return (
-    <div className="mx-auto w-full max-w-7xl px-6 md:px-8">
-      <section className="mb-12 mt-16 flex flex-col items-center justify-center overflow-hidden rounded-3xl border border-gray-200 bg-white px-8 py-10 text-center shadow-md animate-[pi-fade-in_0.8s_ease-out_forwards] transition-all duration-300 hover:border-green-500/30 hover:shadow-lg dark:border-green-500/10 dark:bg-gradient-to-r dark:from-[#0a1f14] dark:via-[#0f2a1c] dark:to-[#0a1f14] dark:shadow-[0_10px_40px_rgba(34,197,94,0.08)] dark:hover:border-green-500/30 dark:hover:shadow-[0_10px_50px_rgba(34,197,94,0.15)] md:px-12 md:py-10">
+    <section className="w-full">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
+        <div className="mx-auto mb-12 mt-16 flex max-w-4xl flex-col items-center justify-center overflow-hidden rounded-3xl border border-gray-200 bg-white px-8 py-10 text-center shadow-md animate-[pi-fade-in_0.8s_ease-out_forwards] transition-all duration-300 hover:border-green-500/30 hover:shadow-lg dark:border-green-500/10 dark:bg-gradient-to-r dark:from-[#0a1f14] dark:via-[#0f2a1c] dark:to-[#0a1f14] dark:shadow-[0_10px_40px_rgba(34,197,94,0.08)] dark:hover:border-green-500/30 dark:hover:shadow-[0_10px_50px_rgba(34,197,94,0.15)] md:px-12 md:py-10">
         <div className="relative z-10 flex flex-col items-center space-y-6">
           {/* Label */}
           <span className="text-sm font-semibold uppercase tracking-wider text-green-600 dark:text-green-400">
@@ -36,8 +37,9 @@ function CTASection() {
             </Link>
           </div>
         </div>
-      </section>
-    </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

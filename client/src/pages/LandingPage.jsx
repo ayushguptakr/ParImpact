@@ -5,6 +5,7 @@ import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import Input from "../components/ui/Input";
 import LiveImpactSnapshot from "../components/ui/LiveImpactSnapshot";
+import DrawEngineFlow from "../components/ui/DrawEngineFlow";
 import { scrollToSection } from "../utils/scrollLanding";
 
 const stats = [
@@ -265,23 +266,7 @@ function LandingPage({
         </div>
       </section>
 
-      <Card id="draw-engine" className="relative scroll-mt-24 overflow-hidden md:p-8 md:scroll-mt-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.04),transparent_60%)] dark:bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_60%)]" />
-        <div className="relative z-10 max-w-2xl space-y-4">
-          <h3 className="text-3xl font-semibold text-neutral-900 md:text-4xl dark:text-[#E5E7EB]">Aerospace Precision. Human Impact.</h3>
-          <p className="text-neutral-600 dark:text-gray-400">
-            Clear metrics, fair draws, and transparent charity routing—so you always know what moved
-            the needle.
-          </p>
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={() => scrollToSection("draw-engine")}
-          >
-            How the draw engine works
-          </Button>
-        </div>
-      </Card>
+      <DrawEngineFlow />
     </div>
   );
 }

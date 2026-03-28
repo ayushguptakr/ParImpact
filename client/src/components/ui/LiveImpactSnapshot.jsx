@@ -1,4 +1,4 @@
-import { HeartIcon, FlagIcon, CheckCircleIcon } from "@heroicons/react/24/outline";
+import { Heart, Flag, CheckCircle } from "lucide-react";
 
 function LiveImpactSnapshot() {
   return (
@@ -13,7 +13,7 @@ function LiveImpactSnapshot() {
             
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-500/10 text-green-400">
-                <HeartIcon className="h-4 w-4" />
+                <Heart className="h-4 w-4" />
               </div>
               <div>
                 <p className="text-xs text-gray-400">Donated this month</p>
@@ -23,7 +23,7 @@ function LiveImpactSnapshot() {
 
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-500/10 text-green-400">
-                <CheckCircleIcon className="h-4 w-4" />
+                <CheckCircle className="h-4 w-4" />
               </div>
               <div>
                 <p className="text-xs text-gray-400">Active programs</p>
@@ -33,7 +33,7 @@ function LiveImpactSnapshot() {
 
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-green-500/10 text-green-400">
-                <FlagIcon className="h-4 w-4" />
+                <Flag className="h-4 w-4" />
               </div>
               <div>
                 <p className="text-xs text-gray-400">Rounds played</p>
